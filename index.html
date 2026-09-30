@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en" data-suit="classic">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SM SHAFIQ | Web-Slinging Full-Stack Developer</title>
+    <meta name="description"
+        content="Portfolio of SM Shafiq - Full-Stack Developer & UI Architect with high-octane Spider-Man animations, interactive web games, and modern tech projects." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="spider-theme">
+    <!-- Interactive Canvas Background for Spider Webs -->
+    <canvas id="spider-web-canvas"></canvas>
+
+    <!-- Web Shooter Custom Cursor Overlay -->
+    <div id="custom-cursor" class="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+        <div class="cursor-spider-sense"></div>
+    </div>
+
+    <!-- Audio Effects Toggle & Suit Switcher Bar -->
+    <header class="top-nav" id="top-nav">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <div class="spider-icon-wrap">
+                    <svg class="spider-svg" viewBox="0 0 100 100">
+                        <path
+                            d="M50,15 Q40,30 35,45 Q20,30 5,25 Q15,40 32,52 Q15,58 2,75 Q20,70 34,60 Q25,80 20,98 Q38,82 48,68 Q50,70 52,68 Q62,82 80,98 Q75,80 66,60 Q80,70 98,75 Q85,58 68,52 Q85,40 95,25 Q80,30 65,45 Q60,30 50,15 Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <span class="brand-text">SM <span class="highlight">SHAFIQ</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">Origin Story</a>
+                <a href="#education" class="nav-link">Academic Academy</a>
+                <a href="#skills" class="nav-link">Spider Powers</a>
+                <a href="#projects" class="nav-link">Webbed Works</a>
+                <a href="#arcade" class="nav-link">Web Arcade</a>
+                <a href="#contact" class="nav-link">Contact Web</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Live Backend Status Badge -->
+                <div class="backend-status-badge" id="backend-status-badge"
+                    title="Flask & SQLite Backend Connection Status">
+                    <span class="status-pulse-dot"></span>
+                    <span id="backend-status-text">BACKEND ONLINE</span>
+                </div>
+                <!-- Sound FX Toggle -->
+                <button id="sound-toggle" class="control-btn" title="Toggle Web FX Sound">
+                    <i class="fas fa-volume-up"></i>
+                    <span class="btn-tooltip">Audio FX</span>
+                </button>
+
+                <!-- Suit Customizer Dropdown -->
+                <div class="suit-selector-wrapper">
+                    <button id="suit-btn" class="control-btn suit-btn" title="Change Spider Suit Theme">
+                        <i class="fas fa-mask"></i>
+                        <span class="suit-label">Suit: <span id="current-suit-name">Classic</span></span>
+                    </button>
+                    <div class="suit-menu" id="suit-menu">
+                        <div class="suit-option active" data-suit="classic">
+                            <span class="suit-color-dot classic-dot"></span>
+                            <span>Classic Red & Blue</span>
+                        </div>
+                        <div class="suit-option" data-suit="miles">
+                            <span class="suit-color-dot miles-dot"></span>
+                            <span>Miles Morales Neon</span>
+                        </div>
+                        <div class="suit-option" data-suit="iron">
+                            <span class="suit-color-dot iron-dot"></span>
+                            <span>Iron Spider Nanotech</span>
+                        </div>
+                        <div class="suit-option" data-suit="symbiote">
+                            <span class="suit-color-dot symbiote-dot"></span>
+                            <span>Symbiote Stealth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <a href="#hero" class="mobile-nav-link">Home</a>
+        <a href="#about" class="mobile-nav-link">Origin Story</a>
+        <a href="#education" class="mobile-nav-link">Academic Academy</a>
+        <a href="#skills" class="mobile-nav-link">Spider Powers</a>
+        <a href="#projects" class="mobile-nav-link">Webbed Works</a>
+        <a href="#arcade" class="mobile-nav-link">Web Arcade</a>
+        <a href="#contact" class="mobile-nav-link">Contact Web</a>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-glow"></div>
+            <div class="hero-realistic-bg"></div>
+
+            <!-- Spider Sense FX Lines -->
+            <div class="spider-sense-indicator hero-sense">
+                <div class="sense-arc arc-1"></div>
+                <div class="sense-arc arc-2"></div>
+                <div class="sense-arc arc-3"></div>
+            </div>
+
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="pulse-dot"></span>
+                        <span>SPIDER-SENSE IS TINGLING!</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="greeting">HEROIC DEVELOPER</span>
+                        <span class="name-display">SM SHAFIQ</span>
+                    </h1>
+
+                    <h2 class="hero-subtitle">
+                        <span class="thwip-tag">&lt;THWIP&gt;</span>
+                        <span id="typing-text" class="typing-text">Full-Stack Web Slinger</span>
+                        <span class="thwip-tag">&lt;/THWIP&gt;</span>
+                    </h2>
+
+                    <p class="hero-description">
+                        Weaving high-performance web applications, responsive user experiences, and modern full-stack
+                        architectures across the digital multiverse.
+                    </p>
+
+                    <div class="quote-box">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <span>"With Great Code Comes Great User Responsibility."</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary thwip-trigger">
+                            <i class="fas fa-spider"></i>
+                            <span>EXPLORE WEBBED WORKS</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline thwip-trigger">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>SEND A SIGNAL</span>
+                        </a>
+                        <a href="#arcade" class="btn btn-accent thwip-trigger">
+                            <i class="fas fa-gamepad"></i>
+                            <span>PLAY WEB ARCADE</span>
+                        </a>
+                    </div>
+
+                    <!-- Hero Quick Stats -->
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-value" data-count="99.9">0</span><span class="stat-unit">%</span>
+                            <span class="stat-label">Uptime & Agility</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value" data-count="35">0</span><span class="stat-unit">+</span>
+                            <span class="stat-label">Web Apps Slung</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value" data-count="100">0</span><span class="stat-unit">%</span>
+                            <span class="stat-label">Bug Free Target</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="spider-avatar-frame">
+                        <div class="spider-glow-ring"></div>
+                        <!-- Interactive 3D Card / Spider Mask Emblem -->
+                        <div class="spider-mask-card" id="spider-mask-card">
+                            <div class="comic-bg-grid"></div>
+
+                            <!-- Spider Mask SVG Illustration -->
+                            <div class="spider-mask-wrapper">
+                                <img src="avatar.jpg" alt="Realistic Spider-Man" class="realistic-avatar-img">
+                            </div>
+
+                            <!-- Floating Action Badges -->
+                            <div class="comic-badge thwip-badge">THWIP!</div>
+                            <div class="comic-badge sense-badge">
+                                <i class="fas fa-bolt"></i> SENSE!
+                            </div>
+
+                            <div class="avatar-footer">
+                                <div class="suit-indicator-tag">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>ACTIVE SUIT: <strong id="suit-tag-text">CLASSIC V1.0</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Down Web Indicator -->
+            <a href="#about" class="scroll-down-web">
+                <span class="web-line"></span>
+                <div class="spider-hanging">
+                    <i class="fas fa-spider"></i>
+                </div>
+                <span class="scroll-text">SWING DOWN</span>
+            </a>
+        </section>
+
+        <!-- ORIGIN STORY / ABOUT SECTION -->
+        <section id="about" class="section origin-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fas fa-book-open"></i> CHAPTER 01</span>
+                    <h2 class="section-title">THE ORIGIN STORY</h2>
+                    <div class="section-underline"></div>
+                </div>
+
+                <div class="origin-grid">
+                    <div class="comic-panel origin-card">
+                        <div class="comic-header">
+                            <span class="panel-num">PANEL #1</span>
+                            <span class="panel-title">THE RADIOACTIVE BUG</span>
+                        </div>
+                        <div class="comic-body">
+                            <div class="origin-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <h3>Bitten by Curiosity</h3>
+                            <p>
+                                It started when a radioactive curiosity for web architecture bit me. What began as
+                                crafting simple HTML pages blossomed into engineering full-stack digital experiences
+                                that span front-end finesse and back-end resilience.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="comic-panel origin-card">
+                        <div class="comic-header">
+                            <span class="panel-num">PANEL #2</span>
+                            <span class="panel-title">WEB-SLINGING CREED</span>
+                        </div>
+                        <div class="comic-body">
+                            <div class="origin-icon">
+                                <i class="fas fa-shield-halved"></i>
+                            </div>
+                            <h3>Great Responsibility</h3>
+                            <p>
+                                In the digital realm, every line of code carries responsibility. I prioritize
+                                accessibility, blazing-fast performance, rock-solid security, and intuitive design
+                                patterns so users feel effortlessly superpowered.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="comic-panel origin-card">
+                        <div class="comic-header">
+                            <span class="panel-num">PANEL #3</span>
+                            <span class="panel-title">MULTIVERSE ARCHITECTURE</span>
+                        </div>
+                        <div class="comic-body">
+                            <div class="origin-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3>Adaptive & Agile</h3>
+                            <p>
+                                Whether slinging TypeScript, React, Next.js, Node.js, Python, or WebGL shader
+                                animations, I continuously adapt to new technological universes to stay ahead of digital
+                                villains (like latency and tech debt).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superpower Stats Hexagon / Radar -->
+                <div class="superpowers-box">
+                    <h3 class="box-title"><i class="fas fa-bolt"></i> HEROIC METRICS & STATS</h3>
+                    <div class="hero-attributes-grid">
+                        <div class="attribute-item">
+                            <div class="attr-header">
+                                <span class="attr-name"><i class="fas fa-tachometer-alt"></i> Code Velocity</span>
+                                <span class="attr-val">98%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" style="width: 98%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="attribute-item">
+                            <div class="attr-header">
+                                <span class="attr-name"><i class="fas fa-brain"></i> Problem Solving</span>
+                                <span class="attr-val">96%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" style="width: 96%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="attribute-item">
+                            <div class="attr-header">
+                                <span class="attr-name"><i class="fas fa-layer-group"></i> Architecture Design</span>
+                                <span class="attr-val">94%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" style="width: 94%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="attribute-item">
+                            <div class="attr-header">
+                                <span class="attr-name"><i class="fas fa-bug-slash"></i> Bug Elimination</span>
+                                <span class="attr-val">99%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" style="width: 99%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="attribute-item">
+                            <div class="attr-header">
+                                <span class="attr-name"><i class="fas fa-mug-hot"></i> Coffee Capacity</span>
+                                <span class="attr-val">100%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="attribute-item">
+                            <div class="attr-header">
+                                <span class="attr-name"><i class="fas fa-comments"></i> Team Synergy</span>
+                                <span class="attr-val">95%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPIDER POWERS / SKILLS SECTION -->
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fas fa-meteor"></i> CHAPTER 02</span>
+                    <h2 class="section-title">SPIDER POWERS & TECH STACK</h2>
+                    <div class="section-underline"></div>
+                </div>
+
+                <div class="skills-categories">
+                    <!-- FRONTEND WEB WEBS -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fab fa-react"></i></div>
+                            <h3>Front-End Web Slinging</h3>
+                        </div>
+                        <div class="skill-badges">
+                            <div class="skill-pill" data-level="Expert">
+                                <i class="fab fa-html5"></i> HTML5 / CSS3
+                            </div>
+                            <div class="skill-pill" data-level="Expert">
+                                <i class="fab fa-js"></i> JavaScript ES6+
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fab fa-react"></i> React.js
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-bolt"></i> Next.js
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-code"></i> TypeScript
+                            </div>
+                            <div class="skill-pill" data-level="Proficient">
+                                <i class="fab fa-vuejs"></i> Vue.js
+                            </div>
+                            <div class="skill-pill" data-level="Expert">
+                                <i class="fas fa-paint-brush"></i> Tailwind / Vanilla CSS
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-cube"></i> Canvas & WebGL
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACKEND & SYSTEMS -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-server"></i></div>
+                            <h3>Back-End & Core Systems</h3>
+                        </div>
+                        <div class="skill-badges">
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fab fa-node-js"></i> Node.js & Express
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fab fa-python"></i> Python & FastAPI
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-database"></i> PostgreSQL / MongoDB
+                            </div>
+                            <div class="skill-pill" data-level="Proficient">
+                                <i class="fas fa-fire"></i> Firebase / Supabase
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-network-wired"></i> RESTful & GraphQL APIs
+                            </div>
+                            <div class="skill-pill" data-level="Proficient">
+                                <i class="fas fa-key"></i> OAuth 2.0 & JWT
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DEVOPS & HEROIC TOOLS -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-tools"></i></div>
+                            <h3>DevOps & Arsenal</h3>
+                        </div>
+                        <div class="skill-badges">
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fab fa-git-alt"></i> Git & GitHub
+                            </div>
+                            <div class="skill-pill" data-level="Proficient">
+                                <i class="fab fa-docker"></i> Docker Containers
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-cloud"></i> Vercel / Netlify / AWS
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fas fa-vial"></i> Jest / Cypress Testing
+                            </div>
+                            <div class="skill-pill" data-level="Advanced">
+                                <i class="fab fa-figma"></i> Figma UI/UX Design
+                            </div>
+                            <div class="skill-pill" data-level="Expert">
+                                <i class="fas fa-terminal"></i> PowerShell & Bash
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEBBED WORKS / PROJECTS SECTION -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fas fa-folder-open"></i> CHAPTER 03</span>
+                    <h2 class="section-title">WEBBED WORKS & MISSIONS</h2>
+                    <div class="section-underline"></div>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All Missions</button>
+                    <button class="filter-btn" data-filter="web-app">Full Stack</button>
+                    <button class="filter-btn" data-filter="ui-ux">Interactive UI</button>
+                    <button class="filter-btn" data-filter="ai-tool">AI & Utilities</button>
+                </div>
+
+                <!-- Project Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="web-app">
+                        <div class="project-image-wrap">
+                            <div class="project-overlay"></div>
+                            <div class="spider-web-watermark">
+                                <i class="fas fa-spider"></i>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Next.js</span>
+                                <span class="project-tag">TypeScript</span>
+                                <span class="project-tag">Tailwind</span>
+                            </div>
+                            <div class="project-preview-art art-1 realistic-card-bg bg-1">
+                                <div class="art-grid"></div>
+                                <div class="art-content">
+                                    <i class="fas fa-globe-americas art-icon"></i>
+                                    <span>MULTIVERSE HUB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Multiverse Dashboard & Analytics</h3>
+                            <p class="project-description">
+                                A real-time high-throughput monitoring dashboard with web-socket telemetry, dark mode
+                                futuristic visuals, and dynamic data streaming.
+                            </p>
+                            <div class="project-footer">
+                                <button class="btn btn-sm btn-outline open-modal-btn" data-project="project-1">
+                                    <i class="fas fa-eye"></i> Mission Brief
+                                </button>
+                                <a href="#" class="project-link" target="_blank" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="ui-ux">
+                        <div class="project-image-wrap">
+                            <div class="project-overlay"></div>
+                            <div class="spider-web-watermark">
+                                <i class="fas fa-spider"></i>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Three.js</span>
+                                <span class="project-tag">WebGL</span>
+                                <span class="project-tag">CSS3</span>
+                            </div>
+                            <div class="project-preview-art art-2 realistic-card-bg bg-2">
+                                <div class="art-grid"></div>
+                                <div class="art-content">
+                                    <i class="fas fa-cube art-icon"></i>
+                                    <span>SPIDER-SENSE 3D</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Spider-Sense 3D Experience</h3>
+                            <p class="project-description">
+                                Interactive WebGL 3D showcase featuring smooth physics particles, custom shaders, and
+                                responsive gesture-based navigation.
+                            </p>
+                            <div class="project-footer">
+                                <button class="btn btn-sm btn-outline open-modal-btn" data-project="project-2">
+                                    <i class="fas fa-eye"></i> Mission Brief
+                                </button>
+                                <a href="#" class="project-link" target="_blank" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="ai-tool">
+                        <div class="project-image-wrap">
+                            <div class="project-overlay"></div>
+                            <div class="spider-web-watermark">
+                                <i class="fas fa-spider"></i>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">FastAPI</span>
+                                <span class="project-tag">OpenAI</span>
+                            </div>
+                            <div class="project-preview-art art-3 realistic-card-bg bg-3">
+                                <div class="art-grid"></div>
+                                <div class="art-content">
+                                    <i class="fas fa-robot art-icon"></i>
+                                    <span>WEB-SLINGER AI</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Web-Slinger AI Assistant</h3>
+                            <p class="project-description">
+                                AI-driven codebase analyzer and bug catching agent that thwips intelligent code
+                                suggestions directly inside developer workflows.
+                            </p>
+                            <div class="project-footer">
+                                <button class="btn btn-sm btn-outline open-modal-btn" data-project="project-3">
+                                    <i class="fas fa-eye"></i> Mission Brief
+                                </button>
+                                <a href="#" class="project-link" target="_blank" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card" data-category="web-app">
+                        <div class="project-image-wrap">
+                            <div class="project-overlay"></div>
+                            <div class="spider-web-watermark">
+                                <i class="fas fa-spider"></i>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">MongoDB</span>
+                            </div>
+                            <div class="project-preview-art art-4 realistic-card-bg bg-4">
+                                <div class="art-grid"></div>
+                                <div class="art-content">
+                                    <i class="fas fa-shopping-cart art-icon"></i>
+                                    <span>HERO STOREFRONT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Heroic E-Commerce Platform</h3>
+                            <p class="project-description">
+                                Ultra-fast modern shopping experience with seamless Stripe checkout, real-time inventory
+                                management, and customizable suit configurators.
+                            </p>
+                            <div class="project-footer">
+                                <button class="btn btn-sm btn-outline open-modal-btn" data-project="project-4">
+                                    <i class="fas fa-eye"></i> Mission Brief
+                                </button>
+                                <a href="#" class="project-link" target="_blank" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEB ARCADE MINI-GAME SECTION -->
+        <section id="arcade" class="section arcade-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fas fa-gamepad"></i> CHAPTER 04</span>
+                    <h2 class="section-title">WEB-SHOOTER ARCADE</h2>
+                    <p class="section-desc">Test your Spider-Reflexes! Thwip webs to eliminate code bugs before time
+                        expires!</p>
+                    <div class="section-underline"></div>
+                </div>
+
+                <div class="arcade-wrapper">
+                    <div class="arcade-scoreboard">
+                        <div class="score-item">
+                            <span class="score-label"><i class="fas fa-bullseye"></i> SCORE:</span>
+                            <span id="game-score" class="score-value">40</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label"><i class="fas fa-stopwatch"></i> TIME:</span>
+                            <span id="game-timer" class="score-value">30s</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label"><i class="fas fa-trophy"></i> BEST:</span>
+                            <span id="game-high-score" class="score-value">90</span>
+                        </div>
+                    </div>
+
+                    <div class="game-container" id="game-container">
+                        <div class="game-overlay" id="game-start-overlay">
+                            <div class="arcade-icon">
+                                <i class="fas fa-spider"></i>
+                            </div>
+                            <h3>READY TO THWIP SOME BUGS?</h3>
+                            <p>Click/Tap bugs to shoot webs and clear them!</p>
+                            <button id="start-game-btn" class="btn btn-primary btn-lg thwip-trigger">
+                                <i class="fas fa-play"></i> START MISSION
+                            </button>
+                        </div>
+
+                        <!-- Game Canvas for Spider Web Shooting -->
+                        <canvas id="game-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fas fa-paper-plane"></i> CHAPTER 05</span>
+                    <h2 class="section-title">SIGNAL THE WEB-SLINGER</h2>
+                    <p class="section-desc">Got a heroic project or a full-stack mission? Send a web signal!</p>
+                    <div class="section-underline"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h3><i class="fas fa-spider"></i> SPIDER-HEADQUARTERS</h3>
+                        <p>Ready to collaborate across any dimension or codebase.</p>
+
+                        <div class="contact-method">
+                            <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="method-details">
+                                <span class="method-title">Direct Web Signal</span>
+                                <span class="method-val">shafiqsm819@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="method-details">
+                                <span class="method-title">Base of Operations</span>
+                                <span class="method-val">KAKINADA</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon"><i class="fas fa-clock"></i></div>
+                            <div class="method-details">
+                                <span class="method-title">Response Reflexes</span>
+                                <span class="method-val">Within 24 Hours</span>
+                            </div>
+                        </div>
+
+                        <div class="social-webs">
+                            <a href="#" class="social-web-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-web-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-web-link" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#" class="social-web-link" title="Discord"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrap">
+                        <div id="contact-response-alert" class="form-response-alert" style="display:none;"></div>
+                        <form id="contact-form" class="spider-form">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Your Hero Name</label>
+                                <input type="text" id="name" required placeholder="e.g. Peter Parker" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                                <input type="email" id="email" required placeholder="shafiqsm819@gmail.com" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject"><i class="fas fa-tag"></i> Mission Subject</label>
+                                <input type="text" id="subject" required
+                                    placeholder="Project Inquiry / Job Opportunity" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message"><i class="fas fa-comment-alt"></i> Mission Details</label>
+                                <textarea id="message" rows="5" required
+                                    placeholder="Describe your web mission..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary form-submit-btn thwip-trigger">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>LAUNCH WEB SIGNAL</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-spider"></i>
+                <span>SM SHAFIQ</span>
+            </div>
+            <p class="footer-text">
+                Crafted with <i class="fas fa-heart text-danger"></i> & Web-Slinging Power. All rights reserved &copy;
+                2026.
+            </p>
+            <div class="footer-back-to-top">
+                <a href="#hero" class="back-top-btn" title="Back to Top">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FOR PROJECT DETAILS -->
+    <div class="modal-backdrop" id="project-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+            <div class="modal-header">
+                <span class="modal-tag" id="modal-project-tag">MISSION BRIEF</span>
+                <h2 id="modal-project-title">Project Title</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-box" id="modal-project-art">
+                    <!-- Art inserted dynamically -->
+                </div>
+                <p id="modal-project-desc">Project details and full specs will be loaded here.</p>
+
+                <h4><i class="fas fa-cogs"></i> Tech Specifications</h4>
+                <ul class="modal-tech-list" id="modal-tech-list">
+                    <!-- Filled dynamically -->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="modal-demo-link" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="#" id="modal-github-link" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-github"></i> View Code
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- MODAL FOR FULL RESUME DOSSIER -->
+    <div class="modal-backdrop" id="resume-modal">
+        <div class="modal-card resume-modal-card">
+            <button class="modal-close-btn" id="resume-modal-close">&times;</button>
+            <div class="modal-header">
+                <span class="modal-tag"><i class="fas fa-id-card"></i> CLASSIFIED DOSSIER</span>
+                <h2>SHAFIQ SHAIK MOHAMMED - RESUME</h2>
+            </div>
+            <div class="modal-body resume-body">
+                <div class="resume-hero-header">
+                    <div class="resume-avatar-sm">
+                        <img src="avatar.jpg" alt="Shafiq Shaik Mohammed">
+                    </div>
+                    <div class="resume-header-meta">
+                        <h3>SHAFIQ SHAIK MOHAMMED</h3>
+                        <p><i class="fas fa-envelope"></i> shafiqsm819@gmail.com | <i class="fas fa-phone"></i> +91
+                            8639773391</p>
+                        <p><i class="fas fa-map-marker-alt"></i> H.NO: 5-5-24, Surya Rao Peta, Kakinada, Andhra Pradesh.
+                            533001</p>
+                        <div class="resume-links-inline">
+                            <a href="https://www.linkedin.com/in/shafiq-shaik-mohammed-183071341/" target="_blank"><i
+                                    class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://shafiq817.github.io/SHAFIQPORTFOLIO/" target="_blank"><i
+                                    class="fas fa-globe"></i> Live Portfolio</a>
+                            <a href="https://github.com/shafiq817/Health-care-webiste-shafiq" target="_blank"><i
+                                    class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-section-block">
+                    <h4><i class="fas fa-bullseye"></i> CAREER OBJECTIVE</h4>
+                    <p>Motivated Computer Science graduate with a strong technical foundation in programming, data
+                        structures, artificial intelligence, and digital literacy. Skilled in Excel, SQL, Power BI, and
+                        Python, with a passion for solving real-world problems through data-driven insights. Seeking an
+                        entry-level opportunity to contribute to IT, analytics, or business operations roles while
+                        continuously learning and growing.</p>
+                </div>
+
+                <div class="resume-section-block">
+                    <h4><i class="fas fa-graduation-cap"></i> EDUCATIONAL QUALIFICATIONS</h4>
+                    <table class="resume-table">
+                        <thead>
+                            <tr>
+                                <th>Degree</th>
+                                <th>Discipline</th>
+                                <th>School / College</th>
+                                <th>Board / University</th>
+                                <th>CGPA / %</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bachelor's</td>
+                                <td>BCA</td>
+                                <td>Aditya Degree College, Kakinada</td>
+                                <td>Aditya Degree College, Kakinada</td>
+                                <td><strong class="glow-gold">7.70</strong></td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Intermediate</td>
+                                <td>BIPC</td>
+                                <td>Aditya Junior College, Kakinada</td>
+                                <td>Board of Intermediate Education</td>
+                                <td><strong class="glow-cyan">60%</strong></td>
+                                <td>2022</td>
+                            </tr>
+                            <tr>
+                                <td>10th</td>
+                                <td>SSC</td>
+                                <td>Narayana Concept School, Kakinada</td>
+                                <td>Board of Secondary Education, AP</td>
+                                <td><strong class="glow-red">9.8</strong></td>
+                                <td>2020</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="resume-section-block">
+                    <h4><i class="fas fa-diagram-project"></i> KEY PROJECTS</h4>
+                    <div class="resume-project-item">
+                        <h5>Health Care Management System</h5>
+                        <p>• Developed a Health Care Management System using HTML, CSS, and Flask, enabling secure
+                            management of patient medical records and streamlined workflows.</p>
+                        <p>• Designed an interactive dashboard using Matplotlib to visualize disease categories and
+                            patient data, improving clarity in medical record analysis.</p>
+                        <p>• <strong>GitHub:</strong> <a href="https://github.com/shafiq817/Health-care-webiste-shafiq"
+                                target="_blank"
+                                style="color:var(--suit-cyan);">https://github.com/shafiq817/Health-care-webiste-shafiq</a>
+                        </p>
+                        <p>• <strong>Live Link:</strong> <a href="https://health-care-webiste-shafiq.onrender.com/"
+                                target="_blank"
+                                style="color:var(--suit-cyan);">https://health-care-webiste-shafiq.onrender.com/</a></p>
+                    </div>
+                    <div class="resume-project-item">
+                        <h5>YouTube Video Analytics</h5>
+                        <p>• Cleaned and processed data to analyze views, likes, comments, and content categories.</p>
+                        <p>• Built visualizations using Matplotlib and Seaborn to identify top-performing trends and
+                            audience engagement.</p>
+                    </div>
+                </div>
+
+                <div class="resume-section-block">
+                    <h4><i class="fas fa-award"></i> CERTIFICATIONS</h4>
+                    <p>• <strong>Cyber Security</strong> – IBM</p>
+                    <p>• <strong>Digital Skill Initiative</strong> – Ministry of Labor & Employment & Microsoft</p>
+                    <p>• <strong>Python Essentials 1 & 2</strong> – Cisco Networking Academy</p>
+                </div>
+
+                <div class="resume-section-block">
+                    <h4><i class="fas fa-list-check"></i> TECHNICAL & CORE SKILLS</h4>
+                    <p>• <strong>Programming & Web:</strong> Python, SQL, HTML, CSS, JavaScript</p>
+                    <p>• <strong>Data & Analytics:</strong> Microsoft Excel, Power BI (Dashboards), SQL Queries,
+                        Matplotlib, Seaborn</p>
+                    <p>• <strong>Core Systems & IT:</strong> Windows Administration, Desktop Management, Ticketing
+                        Systems, Troubleshooting, Problem Solving</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="window.print()" class="btn btn-outline">
+                    <i class="fas fa-print"></i> PRINT / SAVE DOSSIER PDF
+                </button>
+                <button id="close-resume-footer-btn" class="btn btn-primary">
+                    <i class="fas fa-check"></i> CLOSE DOSSIER
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
